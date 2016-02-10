@@ -277,6 +277,22 @@ eststo ipb_ols_log`i':reg logipb i.nrf##i.rryear i.yrsb if rryear>=12 & rryear<=
 esttab pb*0 ipb*0 pb*1 ipb*1, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
 */
 
+
+//02-10
+//hi
+est clear
+quietly{
+eststo hi_ols_log1:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using hi.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo hi_ols_log2:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using hi.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo hi_ols_log3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using hi.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+}
+
 //01-20
 //Alternative specifications
 est clear
