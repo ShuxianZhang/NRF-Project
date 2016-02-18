@@ -42,6 +42,318 @@ gen piipb=iipb/(pb+1)
 
 fvset base 13 rryear
 
+//01-20
+//Alternative specifications
+est clear
+quietly{
+eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using ols1.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+}
+
+
+est clear
+quietly{
+eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using olsct1.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+}
+
+////////////////////////////Comparing PB, IPB, IIPB, CT, ICT, IICT
+//pb, ipb, OLS, sig. differs
+
+//low 5%, 45,18,12,37
+//low 5-10%,79,10,59,3
+//top 5-10%,34,78,54
+//top 5%, 17,58,22,16
+
+//drop low 5%
+//drop low 10%
+//drop low, top 10%
+//drop low, top 5%
+//drop top 5%
+//drop top10%
+
+
+drop if id==34|id==78|id==54|id==17|id==58|id==22|id==16
+
+est clear
+quietly{
+eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using ols6.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using ols6.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+}
+esttab pb*1 ipb*1 pb*2 ipb*2 pb*3 ipb*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+
+
+
+
+
+
+
+
+
+est clear
+
+eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using olsct.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
+
+
+//pb, ipb, FE, sig. differs
+est clear
+quietly{
+eststo pb_fe_log1:xtreg logpb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, fe cl(id)
+eststo ipb_fe_log1:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, fe cl(id)
+eststo pb_fe_log2:xtreg logpb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, fe cl(id)
+eststo ipb_fe_log2:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, fe cl(id)
+eststo pb_fe_log3:xtreg logpb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, fe cl(id)
+eststo ipb_fe_log3:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, fe cl(id)
+}
+esttab pb*1 ipb*1 pb*2 ipb*2 pb*3 ipb*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+//ct, ict, same sig.
+est clear
+quietly{
+eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+}
+esttab ct*1 ict*1 ct*2 ict*2 ct*3 ict*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+
+//ipb,iipb, same sig.
+
+est clear
+quietly{
+eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+}
+esttab ipb*1 iipb*1 ipb*2 iipb*2 ipb*3 iipb*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+//ict, iict, same sig.
+est clear
+quietly{
+eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+}
+esttab ict*1 iict*1 ict*2 iict*2 ict*3 iict*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+//all
+est clear
+quietly{
+eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
+eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
+eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
+eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
+}
+esttab pb_* ct_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+est clear
+quietly{
+eststo hi_ols_log1:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
+eststo hi_ols_log2:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo hi_ols_log3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
+}
+
+esttab hi_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+//i, FE, OLS
+
+//FE,OLS same coef.
+est clear
+quietly{
+eststo ipb_ols_log1:reg logipb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo ipb_fe_log1:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, fe cl(id)
+eststo ipb_ols_log2:reg logipb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo ipb_fe_log2:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, fe cl(id)
+eststo ipb_ols_log3:reg logipb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+eststo ipb_fe_log3:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, fe cl(id)
+}
+esttab ipb_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+est clear
+quietly{
+eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+}
+esttab ipb_* ict_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+//ii
+est clear
+quietly{
+eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
+eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
+eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
+}
+esttab iipb_* iict_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+
+
+
+
+//same coef.
+est clear
+quietly{
+eststo pb_ols_log1:reg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_fe_log1:xtreg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, fe cl(id)
+
+}
+esttab pb_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+est clear
+quietly{
+eststo pb_ols_log1:reg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log4:reg logpb i.nrf##i.rryear yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+}
+esttab pb_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+est clear
+quietly{
+eststo pb_ols_log1:reg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log4:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log5:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log6:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+}
+esttab pb_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+est clear
+quietly{
+eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
+eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
+eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
+eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
+}
+esttab pb_* ct_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
+est clear
+quietly{
+eststo hi_ols_log1:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
+eststo hi_ols_log2:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
+eststo hi_ols_log3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
+}
+
+esttab hi_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+
 /*
 //12-23
 
@@ -292,295 +604,6 @@ eststo hi_ols_log3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rr
 outreg2 using hi.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
 
 }
-
-//01-20
-//Alternative specifications
-est clear
-quietly{
-eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using ols1.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using ols1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-}
-
-
-est clear
-quietly{
-eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using olsct1.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using olsct1.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-}
-
-////////////////////////////Comparing PB, IPB, IIPB, CT, ICT, IICT
-//pb, ipb, OLS, sig. differs
-est clear
-quietly{
-eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using ols.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using ols.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-}
-esttab pb*1 ipb*1 pb*2 ipb*2 pb*3 ipb*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-
-
-est clear
-
-eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using olsct.xls,replace dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-outreg2 using olsct.xls,append dec(3) adjr2 drop(*.yrsb *.subject*)
-
-
-//pb, ipb, FE, sig. differs
-est clear
-quietly{
-eststo pb_fe_log1:xtreg logpb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, fe cl(id)
-eststo ipb_fe_log1:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, fe cl(id)
-eststo pb_fe_log2:xtreg logpb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, fe cl(id)
-eststo ipb_fe_log2:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, fe cl(id)
-eststo pb_fe_log3:xtreg logpb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, fe cl(id)
-eststo ipb_fe_log3:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, fe cl(id)
-}
-esttab pb*1 ipb*1 pb*2 ipb*2 pb*3 ipb*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-//ct, ict, same sig.
-est clear
-quietly{
-eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-}
-esttab ct*1 ict*1 ct*2 ict*2 ct*3 ict*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-
-//ipb,iipb, same sig.
-
-est clear
-quietly{
-eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-}
-esttab ipb*1 iipb*1 ipb*2 iipb*2 ipb*3 iipb*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-//ict, iict, same sig.
-est clear
-quietly{
-eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-}
-esttab ict*1 iict*1 ict*2 iict*2 ict*3 iict*3, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-//all
-est clear
-quietly{
-eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
-eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
-eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
-eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
-}
-esttab pb_* ct_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-est clear
-quietly{
-eststo hi_ols_log1:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
-eststo hi_ols_log2:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo hi_ols_log3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
-}
-
-esttab hi_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-//i, FE, OLS
-
-//FE,OLS same coef.
-est clear
-quietly{
-eststo ipb_ols_log1:reg logipb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo ipb_fe_log1:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=16 & announce<=2011, fe cl(id)
-eststo ipb_ols_log2:reg logipb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo ipb_fe_log2:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=17 & announce<=2010, fe cl(id)
-eststo ipb_ols_log3:reg logipb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-eststo ipb_fe_log3:xtreg logipb i.nrf##i.rryear if rryear>=12 & rryear<=18 & announce<=2009, fe cl(id)
-}
-esttab ipb_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-est clear
-quietly{
-eststo ipb_ols_log1:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo ipb_ols_log2:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo ipb_ols_log3:reg logipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-eststo ict_ols_log1:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo ict_ols_log2:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo ict_ols_log3:reg logict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-}
-esttab ipb_* ict_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-//ii
-est clear
-quietly{
-eststo iipb_ols_log1:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo iipb_ols_log2:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo iipb_ols_log3:reg logiipb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-eststo iict_ols_log1:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=16 & announce<=2011, cl(id)
-eststo iict_ols_log2:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=17 & announce<=2010, cl(id)
-eststo iict_ols_log3:reg logiict i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=12 & rryear<=18 & announce<=2009, cl(id)
-}
-esttab iipb_* iict_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-
-
-
-
-//same coef.
-est clear
-quietly{
-eststo pb_ols_log1:reg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_fe_log1:xtreg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, fe cl(id)
-
-}
-esttab pb_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-est clear
-quietly{
-eststo pb_ols_log1:reg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log4:reg logpb i.nrf##i.rryear yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-}
-esttab pb_*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-est clear
-quietly{
-eststo pb_ols_log1:reg logpb i.nrf##i.rryear if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log4:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log5:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log6:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-}
-esttab pb_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-est clear
-quietly{
-eststo pb_ols_log1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
-eststo pb_ols_log2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo pb_ols_log3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
-eststo ct_ols_log1:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
-eststo ct_ols_log2:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo ct_ols_log3:reg logct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
-}
-esttab pb_* ct_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-est clear
-quietly{
-eststo hi_ols_log1:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=16 & announce<=2011, cl(id)
-eststo hi_ols_log2:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=17 & announce<=2010, cl(id)
-eststo hi_ols_log3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd i.subject#i.year i.male i.arwu_phd i.arwu_insapp if rryear>=10 & rryear<=18 & announce<=2009, cl(id)
-}
-
-esttab hi_*, drop(0.nrf*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
 
 
 //12-21
