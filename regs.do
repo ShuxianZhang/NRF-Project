@@ -35,13 +35,13 @@ replace nrf=1 if award=="NRF" & accept=="Yes"
 
 
 gen logpb=log(pb+1)
-gen logct=log(avgct+1)
-gen loghi=log(hi+1)
 
+gen logavgct=log(avgct+1)
 gen logavgct_xs=log(avgctxs+1)
-gen loghi_xs=log(hixs+1)
-
 gen logavgct_xa=log(avgctxa+1)
+
+gen loghi=log(hi+1)
+gen loghi_xs=log(hixs+1)
 gen loghi_xa=log(hixa+1)
 
 /*
@@ -58,109 +58,111 @@ gen piipb=iipb/(pb+1)
 fvset base 15 rryear
 
 //04-12
+//yrsincephd as continuous
 est clear
 quietly{
+//pb
 eststo pb_1:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
-outreg2 using result.xls,replace dec(3) adjr2
+outreg2 using result_c.xls,replace dec(3) adjr2
 
 eststo pb_2:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo pb_3:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo pb_4:reg logpb i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
+
+//hi_all
+eststo hi_1:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
+outreg2 using result_c.xls,append dec(3) adjr2
+
+eststo hi_2:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
+outreg2 using result_c.xls,append dec(3) adjr2
+
+eststo hi_3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
+outreg2 using result_c.xls,append dec(3) adjr2
+
+eststo hi_4:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
+outreg2 using result_c.xls,append dec(3) adjr2
 }
-esttab pb*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
+esttab pb* hi*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
 
 est clear
 quietly{
-//all
-eststo hi_1:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
-
-eststo hi_2:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
-
-eststo hi_3:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
-
-eststo hi_4:reg loghi i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
-
-//xs
+//hi_xs
 eststo hi_xs_1:reg loghi_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo hi_xs_2:reg loghi_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo hi_xs_3:reg loghi_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo hi_xs_4:reg loghi_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
-//xa
+//hi_xa
 eststo hi_xa_1:reg loghi_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo hi_xa_2:reg loghi_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo hi_xa_3:reg loghi_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo hi_xa_4:reg loghi_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 }
 esttab hi*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
 
 
 est clear
 quietly{
-//all
+//avgct_all
 eststo avgct_1:reg logavgct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_2:reg logavgct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_3:reg logavgct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_4:reg logavgct i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
+}
+esttab avgct*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
 
-//xs
+est clear
+quietly{
+//avgct_xs
 eststo avgct_xs_1:reg logavgct_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_xs_2:reg logavgct_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_xs_3:reg logavgct_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_xs_4:reg logavgct_xs i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
-//xa
+//avgct_xa
 eststo avgct_xa_1:reg logavgct_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=18 & announce<=2012, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_xa_2:reg logavgct_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=19 & announce<=2011, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_xa_3:reg logavgct_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=20 & announce<=2010, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 
 eststo avgct_xa_4:reg logavgct_xa i.nrf##i.rryear i.yrsb i.subject#c.yrsincephd if rryear>=14 & rryear<=21 & announce<=2009, cl(id)
-outreg2 using result.xls,append dec(3) adjr2
+outreg2 using result_c.xls,append dec(3) adjr2
 }
-esttab ct*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
-
-
-
-
+esttab avgct*, drop(0.nrf* *.yrsb *.subject*) order(*.nrf* *.rryear*) se star(* 0.1 ** 0.05 *** 0.01) nogaps
